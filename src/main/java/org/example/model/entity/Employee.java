@@ -1,12 +1,22 @@
-package org.example.model;
+package org.example.model.entity;
 
 import jakarta.persistence.*;
+import org.example.model.dto.EmployeeDto;
 
 @Entity
 public class Employee {
 
     public Employee() {
     }
+
+    public Employee(EmployeeDto employeeDto) {
+        this.firstName = employeeDto.getFirstName();
+        this.lastName = employeeDto.getLastName();
+        this.position = employeeDto.getPosition();
+        this.email = employeeDto.getEmail();
+    }
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

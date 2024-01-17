@@ -1,6 +1,7 @@
 package org.example.controller;
 
-import org.example.model.Employee;
+import org.example.model.dto.EmployeeDto;
+import org.example.model.entity.Employee;
 import org.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,8 +23,8 @@ public class EmployeeController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addEmployee(@RequestBody Employee employee) {
-        Employee savedEmployee = employeeService.addEmployee(employee);
+    public ResponseEntity<?> addEmployee(@RequestBody EmployeeDto employeeDto) {
+        Employee savedEmployee = employeeService.addEmployee(employeeDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployee);
     }

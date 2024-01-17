@@ -1,6 +1,7 @@
 package org.example.service;
 
-import org.example.model.Employee;
+import org.example.model.dto.EmployeeDto;
+import org.example.model.entity.Employee;
 import org.example.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee addEmployee(Employee employee) {
         return employeeRepository.save(employee);
+    }
+
+    @Override
+    public Employee addEmployee(EmployeeDto employeeDto) {
+        return employeeRepository.save(new Employee(employeeDto));
     }
 }
