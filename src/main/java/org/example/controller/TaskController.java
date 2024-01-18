@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/task")
 public class TaskController {
-
+    @Autowired
     private TaskService taskService;
 
     @GetMapping("/tasks")
@@ -27,8 +27,8 @@ public class TaskController {
     @PostMapping("")
     public ResponseEntity<Task> addTask(@RequestBody TaskDto taskDto) {
         try {
-            taskService.addTask(taskDto);
-            return (ResponseEntity<Task>) ResponseEntity.ok();
+            Task newTask = taskService.addTask(taskDto);
+            return ResponseEntity.ok(newTask);
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
