@@ -1,12 +1,36 @@
 package org.example.model.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.example.enums.Status;
 import jakarta.persistence.*;
+import org.example.model.dto.EmployeeDto;
+import org.example.model.dto.TaskDto;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Getter
+import java.util.Date;
+
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Task {
+    public Task(TaskDto taskDto) {
+        this.employee = taskDto.getEmployee();
+        this.description = taskDto.getDescription();
+        this.status = taskDto.getStatus();
+        this.date = taskDto.getDate();
+        if (new Date().after(this.date)) {
+            this.setStatusOverDue();
+        }
+
+    }
+
+    public void setStatusOverDue() {
+        this.status = Status.OVERDUE;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,4 +44,8 @@ public class Task {
 
     @Column
     private Status status;
+
+    @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date;
 }

@@ -10,5 +10,8 @@ public interface TaskService {
     Task addTask(Task task);
     List<Task> getTasks(long EmployeeId, Status status);
     List<Task> getTasks(long EmployeeId);
-    List<Task> getTasks();
+    Task getTasksOrThrowException(long id);
+    void deleteTask (long id);
+
+    List<Task> findAllByStatus (Status status);
 }
