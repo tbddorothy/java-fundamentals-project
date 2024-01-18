@@ -17,4 +17,6 @@ public interface TaskService {
 
     List<Task> getTasksByEmployee_Id(Long employeeId);
 
+    List<Task> getTasksByStatus(Status status);
+
 }

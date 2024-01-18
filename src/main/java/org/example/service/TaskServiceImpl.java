@@ -58,6 +58,13 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
+    public List<Task> getTasksByStatus(Status status) {
+        List<Task> tasks = null;
+        taskRepository.getTasksByStatus(status);
+        return tasks;
+    }
+
+    @Override
     public Void removeTask(Long id) {
         return null;
     }

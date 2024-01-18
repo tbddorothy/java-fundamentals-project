@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.enums.Status;
 import org.example.exception.EmployeeNotFoundException;
 import org.example.model.dto.EmployeeDto;
 import org.example.model.dto.TaskDto;
@@ -20,8 +21,8 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping("/tasks")
-    public List<Task> getTasks() {
-        return taskService.getTasks();
+    public List<Task> getTaskByStatus(Status status) {
+        return null;
     }
 
     @PostMapping("")
