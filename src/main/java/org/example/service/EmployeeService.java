@@ -12,4 +12,10 @@ public interface EmployeeService {
     Employee addEmployee(Employee employee);
 
     Employee addEmployee(EmployeeDto employeeDto);
+    Employee findById(Long id);
+
+    void removeById(Long id);
+
+    Employee updateById(EmployeeDto employeeDto, Long id);
 }
+
