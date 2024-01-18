@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.exception.EmployeeNotFoundException;
 import org.example.model.dto.EmployeeDto;
 import org.example.model.entity.Employee;
 import org.example.service.EmployeeService;
@@ -27,5 +28,15 @@ public class EmployeeController {
         Employee savedEmployee = employeeService.addEmployee(employeeDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployee);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable long id) {
+        try {
+            Employee employee = this.employeeService.findById(id);
+            return ResponseEntity.ok(employee);
+        } catch (EmployeeNotFoundException exception){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 }
