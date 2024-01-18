@@ -1,5 +1,5 @@
 package org.example.model.dto;
-
+import lombok.*;
 
 public class EmployeeDto {
 
