@@ -1,77 +1,44 @@
 package org.example.model.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import jakarta.persistence.*;
 import org.example.model.dto.EmployeeDto;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Table(name = "employees")
 public class Employee {
-
-    public Employee() {
-    }
-
-    public Employee(EmployeeDto employeeDto) {
-        this.firstName = employeeDto.getFirstName();
-        this.lastName = employeeDto.getLastName();
-        this.position = employeeDto.getPosition();
-        this.email = employeeDto.getEmail();
-    }
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    @Column
-    private String email;
-
-    @Column
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column
-    private String position;
+    @Column(name = "email_id")
+    private String emailId;
 
-
-    public Long getId() {
-        return id;
+    public Employee(EmployeeDto employeeDto) {
+        this.firstName=employeeDto.getFirstName();
+        this.emailId=employeeDto.getEmail();
+        this.lastName=employeeDto.getLastName();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPosition() {
-        return position;
+    protected String getPosition() {
+        return null;
     }
 
     public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.exception.EmployeeNotFoundException;
 import org.example.model.dto.EmployeeDto;
 import org.example.model.entity.Employee;
 import org.example.repository.EmployeeRepository;
@@ -32,5 +33,27 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee addEmployee(EmployeeDto employeeDto) {
         return employeeRepository.save(new Employee(employeeDto));
+    }
+
+    @Override
+    public Employee findById(Long id) {
+        return employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not foind with id: " + id));
+    }
+
+    @Override
+    public void deleteEmployeeById(Long id) {
+        employeeRepository.deleteById(id);
+
+    }
+
+    @Override
+    public Employee updateEmployeeById(Long id, EmployeeDto employeeDto) {
+        Employee employee = employeeRepository.findById(id).get();
+        employee.setFirstName(employeeDto.getFirstName());
+        employee.setLastName(employeeDto.getLastName());
+        employee.setEmailId(employeeDto.getEmail());
+        employee.setPosition(employeeDto.getPosition());
+        return employeeRepository.save(employee);
     }
 }
