@@ -7,6 +7,7 @@ import org.example.enums.Status;
 
 @Setter
 @Getter
+@Entity
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
