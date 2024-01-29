@@ -11,6 +11,7 @@ import org.example.model.dto.EmployeeDto;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
 
 
