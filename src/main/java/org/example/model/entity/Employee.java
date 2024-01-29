@@ -5,8 +5,8 @@ import lombok.*;
 import org.example.model.dto.EmployeeDto;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Employee {
     public Employee(EmployeeDto employeeDto) {
