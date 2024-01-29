@@ -16,8 +16,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class Task {
 
-    //public Task(){}
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

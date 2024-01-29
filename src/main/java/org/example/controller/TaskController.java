@@ -64,8 +64,6 @@ public class TaskController {
     @PutMapping("/updateTask/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody TaskDto taskdto) {
         try {
-
-            Status overdue=Status.OVERDUE;
             Task task = taskService.findById(id);
             if (task != null) {
                 Employee employee = employeeService.findById(taskdto.getEmployeeId());
@@ -73,11 +71,7 @@ public class TaskController {
                 if (employee != null) {
                     task.setDescription(taskdto.getDescription());
                     task.setEmployee(employee);
-                    if (task.getCompletion().compareTo(date) > 0) {
-                        task.setStatus(taskdto.getStatus());
-                    } else {
-                        task.setStatus(overdue);
-                    }
+                    task.setStatus(taskdto.getStatus());
                     taskService.upateTask(task);
                 }
             }

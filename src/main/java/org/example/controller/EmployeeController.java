@@ -22,7 +22,7 @@ public class EmployeeController {
         return employeeService.getAllEmployees();
     }
 
-    @PostMapping("")
+    @PostMapping("/addEmployee")
     public ResponseEntity<?> addEmployee(@RequestBody EmployeeDto employeeDto) {
         Employee savedEmployee = employeeService.addEmployee(employeeDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployee);
