@@ -9,12 +9,9 @@ public enum Status {
     COMPLETE("Complete"),
     OVERDUE("OVERDUE");
 
-
     private final String label;
-
     Status(String label) {
         this.label = label;
     }
 
-    ;;
 }

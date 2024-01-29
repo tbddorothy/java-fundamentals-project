@@ -21,10 +21,9 @@ public class Task {
         this.description = taskDto.getDescription();
         this.status = taskDto.getStatus();
         this.date = taskDto.getDate();
-        if (new Date().after(this.date)) {
+        if (new java.util.Date().after(this.date)) {
             this.setStatusOverDue();
         }
-
     }
 
     public void setStatusOverDue() {
@@ -46,6 +45,5 @@ public class Task {
     private Status status;
 
     @Column
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 }

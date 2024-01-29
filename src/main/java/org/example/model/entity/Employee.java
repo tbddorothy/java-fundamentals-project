@@ -34,4 +34,18 @@ public class Employee {
     @Column
     private String position;
 
+    public Employee(Long id, String email, String firstName, String lastName, String position) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.position = position;
+    }
+    public void SetDefault (){
+        this.id = 1L;
+        this.email = "email@mail.com";
+        this.firstName = "firstName";
+        this.lastName = "lastName";
+        this.position = "position";
+    }
 }
