@@ -1,17 +1,18 @@
 package org.example.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.model.dto.EmployeeDto;
 
 @Setter
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
-
-    public Employee() {
-    }
 
     public Employee(EmployeeDto employeeDto) {
         this.firstName = employeeDto.getFirstName();
@@ -19,8 +20,6 @@ public class Employee {
         this.position = employeeDto.getPosition();
         this.email = employeeDto.getEmail();
     }
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +36,5 @@ public class Employee {
 
     @Column
     private String position;
-
 
 }

@@ -1,14 +1,25 @@
 package org.example.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.enums.Status;
+import org.example.model.dto.EmployeeDto;
+import org.example.model.dto.TaskDto;
 
 @Setter
 @Getter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Task {
+    public Task(TaskDto taskDto) {
+        this.description = taskDto.getDescription();
+        this.status = taskDto.getStatus();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
